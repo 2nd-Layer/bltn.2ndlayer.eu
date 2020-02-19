@@ -2,6 +2,15 @@ html,body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 }
 
+code, pre {
+  background-color: transparent;
+  color: white;
+}
+
+pre {
+  text-align: left;
+}
+
 .hero-head {
   border-bottom: 1px solid white;
 }
