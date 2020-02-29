@@ -30,7 +30,7 @@ jobs:
           JSON=$(curl --proto '=https' --tlsv1.2 -sSf \
             "https://pooltool.s3-us-west-2.amazonaws.com/8e4d2a3/pools/${{ steps.ITNv1_POOL.outputs.ID }}/currentstakers.json")
           EPOCH_NR=$(echo ${JSON} | jq -r .epoch )
-          EPOCH_${EPOCH_NR}_STAKERS.json
+          echo ${JSON} > EPOCH_${EPOCH_NR}_STAKERS.json
       - name: Upload ITNv1 epoch steps.ITNv1_EPOCH.outputs.CURRENT stakers data
         uses: actions/upload-artifact@v1
         with:
