@@ -1,5 +1,7 @@
 on:
   push:
+    branches:
+      - 'add-BLTNA-promo-github-actions-workflow'
   schedule:
     # * is a special character in YAML so you have to quote this string
     - cron:  '0 20 * * *'
@@ -7,7 +9,7 @@ on:
 name: Download data from PoolTool
 
 jobs:
-  check-jormungandr-release:
+  get-pooltool-data:
     name: Check input-output-hk/jormungandr releases
     runs-on: ubuntu-latest
     steps:
