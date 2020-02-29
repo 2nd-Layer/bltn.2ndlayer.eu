@@ -23,11 +23,12 @@ jobs:
           JSON=$(curl --proto '=https' --tlsv1.2 -sSf \
             "https://pooltool.s3-us-west-2.amazonaws.com/8e4d2a3/pools/${{ steps.ITNv1_setPOOL.outputs.ID }}/currentstakers.json")
           EPOCH_NR=$(echo ${JSON} | jq -r .epoch )
-          echo ${JSON} > EPOCH_${EPOCH_NR}_STAKERS_ALL.json
-          echo ${JSON} | jq -r 'del(.updatedAt,.epoch) | del(.d[] | select(.stake == 0))' > EPOCH_${EPOCH_NR}_STAKERS_CURRENT.json
+          mkdir JSON
+          echo ${JSON} > JSON/EPOCH_${EPOCH_NR}_STAKERS_ALL.json
+          echo ${JSON} | jq -r 'del(.updatedAt,.epoch) | del(.d[] | select(.stake == 0))' > JSON/EPOCH_${EPOCH_NR}_STAKERS_CURRENT.json
           echo "::set-output name=EPOCH_NR::${EPOCH_NR}"
       - name: Upload ITNv1 stakers data for all epochs
         uses: actions/upload-artifact@v1
         with:
-          name: EPOCH_${{ steps.ITNv1_getStakers.outputs.EPOCH_NR }}_STAKERS.zip
-          path: EPOCH_${{ steps.ITNv1_getStakers.outputs.EPOCH_NR }}_STAKERS_*.json
+          name: EPOCH_${{ steps.ITNv1_getStakers.outputs.EPOCH_NR }}_STAKERS
+          path: JSON
