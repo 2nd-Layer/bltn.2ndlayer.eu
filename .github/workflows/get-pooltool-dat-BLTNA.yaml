@@ -26,7 +26,11 @@ jobs:
           echo "::set-output name=CURRENT::${CURRENT}"
       - name: Get current epoch stakers for BLTNA
         run: |
-          ls -l cashback/data/BLTNA/
           curl --proto '=https' --tlsv1.2 -sSf \
             "https://pooltool.s3-us-west-2.amazonaws.com/8e4d2a3/pools/${{ steps.ITNv1_POOL.outputs.ID }}/currentstakers.json" \
-            -o cashback/data/BLTNA/JSON/EPOCH_${{ steps.ITNv1_EPOCH.outputs.CURRENT }}_STAKERS.json
+            -o EPOCH_${{ steps.ITNv1_EPOCH.outputs.CURRENT }}_STAKERS.json
+      - name: Upload math result for job 1
+        uses: actions/upload-artifact@v1
+        with:
+          name: EPOCH_${{ steps.ITNv1_EPOCH.outputs.CURRENT }}_STAKERS
+          path: EPOCH_${{ steps.ITNv1_EPOCH.outputs.CURRENT }}_STAKERS.json
