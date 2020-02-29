@@ -14,22 +14,14 @@ jobs:
     name: Get PoolTool data
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
       - name: Set Pool ID for BLTNA
-        id: ITNv1_POOL
+        id: ITNv1_setPOOL
         run: echo "::set-output name=ID::0359c9a1b26be45a91a4ddb1d02fb9c0f6d779ed5e515924ee1597f272336064"
-#      - name: Get current ITNv1 epoch from PoolTool
-#        id: ITNv1_EPOCH
-#        run: |
-#          CURRENT=$(curl --proto '=https' --tlsv1.2 -sSf "https://pooltool.s3-us-west-2.amazonaws.com/stats/stats.json" | jq -r .currentepoch)
-#          $((CURRENT--))
-#          echo "::set-output name=CURRENT::${CURRENT}"
       - name: Get epoch stakers for BLTNA
         id: ITNv1_getStakers
         run: |
           JSON=$(curl --proto '=https' --tlsv1.2 -sSf \
-            "https://pooltool.s3-us-west-2.amazonaws.com/8e4d2a3/pools/${{ steps.ITNv1_POOL.outputs.ID }}/currentstakers.json")
+            "https://pooltool.s3-us-west-2.amazonaws.com/8e4d2a3/pools/${{ steps.ITNv1_setPOOL.outputs.ID }}/currentstakers.json")
           EPOCH_NR=$(echo ${JSON} | jq -r .epoch )
           echo ${JSON} > EPOCH_${EPOCH_NR}_STAKERS.json
           echo "::set-output name=EPOCH_NR::${EPOCH_NR}"
