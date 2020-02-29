@@ -19,17 +19,18 @@ jobs:
       - name: Set Pool ID for BLTNA
         id: ITNv1_POOL
         run: echo "::set-output name=ID::0359c9a1b26be45a91a4ddb1d02fb9c0f6d779ed5e515924ee1597f272336064"
-      - name: Get current ITNv1 epoch from PoolTool
-        id: ITNv1_EPOCH
+#      - name: Get current ITNv1 epoch from PoolTool
+#        id: ITNv1_EPOCH
+#        run: |
+#          CURRENT=$(curl --proto '=https' --tlsv1.2 -sSf "https://pooltool.s3-us-west-2.amazonaws.com/stats/stats.json" | jq -r .currentepoch)
+#          $((CURRENT--))
+#          echo "::set-output name=CURRENT::${CURRENT}"
+      - name: Get epoch stakers for BLTNA
         run: |
-          CURRENT=$(curl --proto '=https' --tlsv1.2 -sSf "https://pooltool.s3-us-west-2.amazonaws.com/stats/stats.json" | jq -r .currentepoch)
-          $((CURRENT--))
-          echo "::set-output name=CURRENT::${CURRENT}"
-      - name: Get current epoch stakers for BLTNA
-        run: |
-          curl --proto '=https' --tlsv1.2 -sSf \
-            "https://pooltool.s3-us-west-2.amazonaws.com/8e4d2a3/pools/${{ steps.ITNv1_POOL.outputs.ID }}/currentstakers.json" \
-            -o EPOCH_${{ steps.ITNv1_EPOCH.outputs.CURRENT }}_STAKERS.json
+          JSON=$(curl --proto '=https' --tlsv1.2 -sSf \
+            "https://pooltool.s3-us-west-2.amazonaws.com/8e4d2a3/pools/${{ steps.ITNv1_POOL.outputs.ID }}/currentstakers.json")
+          EPOCH_NR=$(echo ${JSON} | jq -r .epoch )
+          EPOCH_${EPOCH_NR}_STAKERS.json
       - name: Upload ITNv1 epoch steps.ITNv1_EPOCH.outputs.CURRENT stakers data
         uses: actions/upload-artifact@v1
         with:
