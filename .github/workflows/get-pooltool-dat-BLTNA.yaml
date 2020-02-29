@@ -2,6 +2,7 @@ on:
   push:
     branches:
       - 'add-BLTNA-promo-github-actions-workflow'
+      - 'update-BLTNA-promo-github-actions-workflow'
   schedule:
     # * is a special character in YAML so you have to quote this string
     - cron:  '0 20 * * *'
@@ -10,7 +11,7 @@ name: Download data from PoolTool
 
 jobs:
   get-pooltool-data:
-    name: Check input-output-hk/jormungandr releases
+    name: Get PoolTool data
     runs-on: ubuntu-latest
     steps:
       - name: Set Pool ID for BLTNA
@@ -19,11 +20,8 @@ jobs:
       - name: Get current ITNv1 epoch from PoolTool
       - id: ITNv1_EPOCH
       - run: |
-          CURRENT=$(curl --proto '=https' --tlsv1.2 -sSf \
-            "https://pooltool.s3-us-west-2.amazonaws.com/stats/stats.json" | jq -r .currentepoch)
+          CURRENT=$(curl --proto '=https' --tlsv1.2 -sSf "https://pooltool.s3-us-west-2.amazonaws.com/stats/stats.json" | jq -r .currentepoch)
           echo "::set-output name=CURRENT::${CURRENT}
       - name: Get current stakers for BLTNA
         run: |
-          curl --proto '=https' --tlsv1.2 -sSf \
-            "https://pooltool.s3-us-west-2.amazonaws.com/8e4d2a3/pools/${{ steps.ITNv1_POOL.outputs.ID }}/currentstakers.json" \
-            -o cashback/data/BLTNA/JSON/EPOCH_${{ steps.ITNv1_EPOCH.outputs.CURRENT }}_STAKERS.json
+          curl --proto '=https' --tlsv1.2 -sSf "https://pooltool.s3-us-west-2.amazonaws.com/8e4d2a3/pools/${{ steps.ITNv1_POOL.outputs.ID }}/currentstakers.json" -o cashback/data/BLTNA/JSON/EPOCH_${{ steps.ITNv1_EPOCH.outputs.CURRENT }}_STAKERS.json
