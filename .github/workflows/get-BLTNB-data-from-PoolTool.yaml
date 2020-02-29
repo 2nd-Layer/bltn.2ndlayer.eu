@@ -1,34 +1,34 @@
 on:
   push:
     branches:
-      - 'add-BLTNA-promo-github-actions-workflow'
-      - 'update-BLTNA-promo-github-actions-workflow'
+      - 'add-BLTNB-promo-github-actions-workflow'
+      - 'update-BLTNB-promo-github-actions-workflow'
   schedule:
     # * is a special character in YAML so you have to quote this string
-    - cron:  '0 20 * * *'
+    - cron:  '0 21 * * *'
 
-name: Download data from PoolTool
+name: Download BLTNB data from PoolTool
 
 jobs:
   get-pooltool-data:
     name: Get PoolTool data
     runs-on: ubuntu-latest
     steps:
-      - name: Set Pool ID for BLTNA
+      - name: Set Pool ID for BLTNB
         id: ITNv1_setPOOL
         run: echo "::set-output name=ID::0359c9a1b26be45a91a4ddb1d02fb9c0f6d779ed5e515924ee1597f272336064"
-      - name: Get epoch stakers for BLTNA
+      - name: Get epoch stakers for BLTNB
         id: ITNv1_getStakers
         run: |
           JSON=$(curl --proto '=https' --tlsv1.2 -sSf \
             "https://pooltool.s3-us-west-2.amazonaws.com/8e4d2a3/pools/${{ steps.ITNv1_setPOOL.outputs.ID }}/currentstakers.json")
           EPOCH_NR=$(echo ${JSON} | jq -r .epoch )
           mkdir JSON
-          echo ${JSON} > JSON/EPOCH_${EPOCH_NR}_STAKERS_ALL.json
-          echo ${JSON} | jq -r 'del(.updatedAt,.epoch) | del(.d[] | select(.stake == 0))' > JSON/EPOCH_${EPOCH_NR}_STAKERS_CURRENT.json
+          echo ${JSON} > JSON/BLTNB_EPOCH_${EPOCH_NR}_STAKERS_ALL.json
+          echo ${JSON} | jq -r 'del(.updatedAt,.epoch) | del(.d[] | select(.stake == 0))' > JSON/BLTNB_EPOCH_${EPOCH_NR}_STAKERS_CURRENT.json
           echo "::set-output name=EPOCH_NR::${EPOCH_NR}"
-      - name: Upload ITNv1 stakers data for all epochs
+      - name: Upload BLTNB ITNv1 stakers data for all epochs
         uses: actions/upload-artifact@v1
         with:
-          name: EPOCH_${{ steps.ITNv1_getStakers.outputs.EPOCH_NR }}_STAKERS
+          name: BLTNB_EPOCH_${{ steps.ITNv1_getStakers.outputs.EPOCH_NR }}_STAKERS
           path: JSON
