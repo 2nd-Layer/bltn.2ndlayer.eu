@@ -16,7 +16,7 @@ jobs:
     steps:
       - name: Set Pool ID for BLTNA
         id: ITNv1_POOL
-        run: echo "::set-output name=ID::'0359c9a1b26be45a91a4ddb1d02fb9c0f6d779ed5e515924ee1597f272336064'"
+        run: echo "::set-output name=ID::0359c9a1b26be45a91a4ddb1d02fb9c0f6d779ed5e515924ee1597f272336064"
       - name: Get current ITNv1 epoch from PoolTool
         id: ITNv1_EPOCH
         run: |
