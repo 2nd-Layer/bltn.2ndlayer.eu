@@ -21,6 +21,7 @@ jobs:
         run: echo "::set-output name=ID::0359c9a1b26be45a91a4ddb1d02fb9c0f6d779ed5e515924ee1597f272336064"
       - name: Get current ITNv1 epoch from PoolTool
         id: ITNv1_EPOCH
+        shell: bash
         run: |
           CURRENT=$(curl --proto '=https' --tlsv1.2 -sSf "https://pooltool.s3-us-west-2.amazonaws.com/stats/stats.json" | jq -r .currentepoch)
           ${CURRENT--}
