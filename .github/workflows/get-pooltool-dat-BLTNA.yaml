@@ -26,13 +26,15 @@ jobs:
 #          $((CURRENT--))
 #          echo "::set-output name=CURRENT::${CURRENT}"
       - name: Get epoch stakers for BLTNA
+        id: ITNv1_getStakers
         run: |
           JSON=$(curl --proto '=https' --tlsv1.2 -sSf \
             "https://pooltool.s3-us-west-2.amazonaws.com/8e4d2a3/pools/${{ steps.ITNv1_POOL.outputs.ID }}/currentstakers.json")
           EPOCH_NR=$(echo ${JSON} | jq -r .epoch )
           echo ${JSON} > EPOCH_${EPOCH_NR}_STAKERS.json
-      - name: Upload ITNv1 epoch steps.ITNv1_EPOCH.outputs.CURRENT stakers data
+          echo "::set-output name=EPOCH_NR::${CURRENT}"
+      - name: Upload ITNv1 epoch stakers data
         uses: actions/upload-artifact@v1
         with:
-          name: EPOCH_${{ steps.ITNv1_EPOCH.outputs.CURRENT }}_STAKERS
-          path: EPOCH_${{ steps.ITNv1_EPOCH.outputs.CURRENT }}_STAKERS.json
+          name: EPOCH_${{ steps.ITNv1_getStakers.outputs.EPOCH_NR }}_STAKERS.zip
+          path: EPOCH_${{ steps.ITNv1_getStakers.outputs.EPOCH_NR }}_STAKERS.json
