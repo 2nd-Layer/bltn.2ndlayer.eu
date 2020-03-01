@@ -6,3 +6,6 @@ Current Cardano Shelley Incentivized Testnet v1 is operated using Rust codebase 
 [Jormungandr node](https://github.com/input-output-hk/jormungandr).
 Jormungandr uses [Poldercast p2p pub/sub](https://github.com/primetype/poldercast) for transaction (fragments) and block distribution
 between individual nodes of the topology.
+
+### Poldercast issues
+- [ ] [Rust Poldercast](https://github.com/primetype/poldercast) does not support static topology
