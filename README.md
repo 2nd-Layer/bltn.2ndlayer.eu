@@ -1,6 +1,8 @@
 # [bltn.2ndlayer.eu](https://bltn.2ndlayer.eu)
 Better Late Than Never | Cardano Stake Pool
 
+[GitHub Pages hosted version](https://2nd-layer.github.io/bltn.2ndlayer.eu/)
+
 ## Cardano Shelley ITNv1 Overview
 Current Cardano Shelley Incentivized Testnet v1 is operated using Rust codebase with a 
 [Jormungandr node](https://github.com/input-output-hk/jormungandr).
