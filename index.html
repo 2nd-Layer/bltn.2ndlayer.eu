@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Better Late Than Never | Cardano Stake Pool</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+    <!-- Bulma Version 0.8.x-->
+    <link rel="stylesheet" href="https://unpkg.com/bulma@0.8.0/css/bulma.min.css" />
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="/images/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="/images/apple-touch-icon-60x60.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/images/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="/images/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/images/apple-touch-icon-152x152.png" />
+    <link rel="icon" type="image/png" href="/images/favicon-196x196.png" sizes="196x196" />
+    <link rel="icon" type="image/png" href="/images/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="/images/favicon-128.png" sizes="128x128" />
+    <meta name="application-name" content="2ⁿᵈ Layer Magazine"/>
+    <meta name="msapplication-TileColor" content="#FFFFFF" />
+    <meta name="msapplication-TileImage" content="/images/mstile-144x144.png" />
+    <meta name="msapplication-square70x70logo" content="/images/mstile-70x70.png" />
+    <meta name="msapplication-square150x150logo" content="/images/mstile-150x150.png" />
+    <meta name="msapplication-wide310x150logo" content="/images/mstile-310x150.png" />
+    <meta name="msapplication-square310x310logo" content="/images/mstile-310x310.png" />
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-113467444-2"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-rss/3.4.1/jquery.rss.js" integrity="sha256-62uuhhOj4Y56qy6mSmM9fp4Msmh9QFzUj0TueJgT+n4=" crossorigin="anonymous">
+    </script>
+    <script>
+      jQuery(function($) {
+        $("#rss-feeds").rss("https://medium.com/feed/@2ndlayer.eu",
+          {
+            limit: 10,
+            ssl: true,
+            support: false,
+            entryTemplate: '<li><a title="{title}" href="{url}">{title}</a></li>'
+          });
+      });
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-113467444-2');
+    </script>
+  </head>
+  <body>
+    <section class="hero is-info is-fullheight">
+      <div class="hero-head">
+        <nav class="navbar">
+          <div class="container">
+            <div class="navbar-brand">
+              <a class="navbar-item" href="/">
+                Better Late Than Never | Cardano Stake Pool
+              </a>
+              <span class="navbar-burger burger" data-target="navbarMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+              </span>
+            </div>
+            <div id="navbarMenu" class="navbar-menu">
+              <div class="navbar-end">
+                <span class="navbar-item">
+                  <a class="button is-white is-outlined" href="https://twitter.com/2nd_Layer">
+                    <span class="icon">
+                      <i class="fab fa-twitter-square"></i>
+                    </span>
+                    <span>Twitter</span>
+                  </a>
+                </span>
+                <span class="navbar-item">
+                  <a class="button is-white is-outlined" href="https://www.facebook.com/2ndlayer.eu">
+                    <span class="icon">
+                    <i class="fab fa-facebook-square"></i>
+                    </span>
+                    <span>Facebook</span>
+                  </a>
+                </span>
+                <span class="navbar-item">
+                  <a class="button is-white is-outlined" href="https://github.com/2nd-Layer/">
+                    <span class="icon">
+                      <i class="fab fa-github-square"></i>
+                    </span>
+                    <span>GitHub</span>
+                  </a>
+                </span>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+      <div class="hero-body">
+        <div class="container has-text-centered">
+          <div class="columns">
+            <div class="left-sidebar box column is-3">
+              <h2 class="has-text-white title is-4">Our latest updates</h2>
+              <div id="rss-feeds" class="content has-text-left">
+              </div>
+            </div>
+            <div class="column is-6 is-offset-1">
+              <h1 class="title">Better Late Than Never</h1>
+              <h2 class="subtitle">Cardano Stake Pool</h2>
+              <div class="columns">
+                <p class="column">While our name may sound to you as a joke, we're are dead serious about decentralization of finance, Internet and democratic values!
+                </p>
+                <p class="column">We have chosen this Stake Pool name only for the Cardano Shelley incentivized testnet as an inside joke, because life is suppose to be fun...
+                </p>
+              </div>
+              <div class="content">
+                <p>It's our objective for when Shelley gets released to the Cardano mainnet to operate an enterprise-class transaction processing service and use the revenue generated by this initiative to create inovative solutions based on Cardano Distributed Ledger technology a.k.a Cardano Blockchain.</p>
+                <p>Road to Shelley has been a rocky one, but great science has been published by a top class scientists working alongside <a href="https://www.iohk.io/">IOHK</a> and we appreciate the rigor with which updates to the network have been released. Now it's time for the <a href="https://www.cardanofoundation.org/">great Cardano community</a> to give back!</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-foot" style="margin-bottom: 1rem;">
+        <div class="container has-text-centered">
+          <h2 class="subtitle">Project Partners</h2>
+          <div class="columns">
+            <div class="column">
+              <h3 class="title is-6 is-marginless">Pool Operator</h3>
+              <figure class="image">
+                  <a href="https://www.2ndlayer.eu/">
+                    <img style="height: 3rem;" src="/images/logos/partners/2ndlayer-logo-white.svg">
+                  </a>
+                </figure>
+              </div>
+              <div class="column">
+                <h3 class="title is-6 is-marginless">Infrastructure Provider</h3>
+                <figure class="image">
+                  <a href="https://www.perlur.cloud/">
+                    <img style="height: 3rem;" src="/images/logos/partners/perlur-logo-white.svg">
+                  </a>
+                </figure>
+              </div>
+              <div class="column">
+                <h3 class="title is-6 is-marginless">Internet Service Provider</h3>
+                <figure class="image">
+                  <a href="https://www.poda.cz/">
+                    <img style="height: 3rem;" src="/images/logos/partners/poda-logo-white.svg">
+                  </a>
+                </figure>
+              </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script async type="text/javascript" src="/js/bulma.js"></script>
+  </body>
+</html>
